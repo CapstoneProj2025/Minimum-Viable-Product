@@ -1,1 +1,276 @@
+:root {
+    --pastel-blue: #CFEFF9;
+    --pastel-green: #DFF7E6;
+    --accent-blue: #63C1F6;
+    --accent-green: #7EE0A1;
+    --white: #ffffff;
+    --muted: #6b7280;
+    --radius: 14px;
+    --primary: #63C1F6;
+    --primary-hover: #4aa8e8;
+    --primary-active: #3a8fcc;
+    --stats-border-thickness: 12px;
+}
 
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #0f172a;
+    background: linear-gradient(180deg, rgba(207,239,249,0.93) 0%, rgba(223,247,230,0.93) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TIGHTER HORIZONTAL PADDING — CLOSER TO SCREEN EDGES */
+header,
+main.hero,
+.stats-section,
+footer {
+    width: 100%;
+    max-width: 1400px; /* Wider container */
+    padding-left: 16px;   /* Reduced from 24px */
+    padding-right: 16px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    color: var(--white);
+    box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+    flex-shrink: 0;
+}
+
+.brand .name {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    font-size: 1.05rem;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all .18s ease;
+}
+.nav-link:hover { background: rgba(255,255,255,0.22); color: #062; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn-primary,
+.btn-solid {
+    background: linear-gradient(90deg, var(--primary), var(--accent-green));
+    color: #042;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 800;
+    box-shadow: 0 12px 30px rgba(99,193,246,0.12);
+    transition: transform .14s cubic-bezier(.2,.9,.25,1), box-shadow .14s ease, filter .12s ease;
+}
+.btn-primary:hover,
+.btn-solid:hover {
+    transform: scale(1.06);
+    box-shadow: 0 28px 72px rgba(63,150,230,0.24);
+    filter: brightness(1.03);
+}
+.btn-primary:active,
+.btn-solid:active {
+    transform: scale(.995);
+    box-shadow: 0 8px 20px rgba(63,150,230,0.14);
+}
+
+/* HERO SECTION — TIGHTER & WIDER */
+main.hero {
+    padding: 48px 16px; /* Reduced side padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px; /* Balanced gap */
+}
+
+/* LEFT SIDE — SLIGHTLY NARROWER */
+.hero-left {
+    flex: 0 0 52%;
+    padding: 24px;
+    border-radius: var(--radius);
+    background: transparent;
+}
+
+/* RIGHT SIDE — WIDER, NO SHADOW, FULL PLANE FIT */
+.hero-right {
+    flex: 0 0 46%;
+    width: 900;   /* Increased from 630px → full plane fits */
+    height: 600px;  /* Slightly taller for balance */
+    border-radius: 28px;
+    background: transparent !important;
+    box-shadow: none !important; /* REMOVED DROP SHADOW */
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+}
+
+/* SPLINE VIEWER — FULLY TRANSPARENT & FULL SIZE */
+spline-viewer {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    border: none;
+    background: transparent !important;
+}
+spline-viewer::part(canvas) {
+    background: transparent !important;
+}
+
+h1 {
+    margin: 0 0 12px 0;
+    font-size: 80px;
+    line-height: 0.95;
+    letter-spacing: -1px;
+}
+
+p.lead {
+    margin: 0 0 20px 0;
+    color: #344054;
+    font-size: 20px;
+}
+
+.cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* STATS SECTION — TIGHTER */
+.stats-section {
+    margin: 36px 16px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 18px 0;
+    flex-wrap: wrap;
+}
+
+.stats-section .stat {
+    background: linear-gradient(90deg, var(--primary), var(--accent-green));
+    padding: var(--stats-border-thickness);
+    border-radius: 18px;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 12px;
+    min-width: 280px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+}
+
+.stat-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.stat .num { font-weight: 800; font-size: 1.8rem; color: #0f172a; }
+.stat .label { font-size: 1rem; color: var(--muted); margin-top: 6px; }
+
+.stats-section .stat:hover {
+    transform: translateY(-10px);
+}
+.stats-section .stat:hover .stat-card {
+    box-shadow: 0 28px 90px rgba(2,6,23,0.14);
+}
+
+footer {
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .hero-left { flex: 0 0 50%; }
+    .hero-right { flex: 0 0 48%; width: 100%; max-width: 680px; height: 480px; }
+}
+
+@media (max-width: 880px) {
+    h1 { font-size: 40px; line-height: 1.02; }
+    
+    main.hero {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        padding: 20px 16px;
+        gap: 16px;
+    }
+
+    .hero-left {
+        flex: 1 1 auto;
+        padding: 20px;
+    }
+
+    .hero-right {
+        order: -1;
+        flex: 1 1 auto;
+        width: 100%;
+        height: 380px;
+        border-radius: 18px;
+    }
+
+    .brand .name { display: none; }
+    .stats-section { flex-direction: column; gap: 12px; padding: 12px 16px; align-items: center; }
+    .stat-card { min-width: 90%; min-height: 160px; }
+}
