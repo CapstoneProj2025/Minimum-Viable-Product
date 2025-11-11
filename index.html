@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hero</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Spline Viewer Runtime -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.99/build/spline-viewer.js"></script>
+</head>
+<body>
+    <header>
+        <a class="brand" href="index.html" aria-label="Back to home — Sign In">
+            <div class="logo">CN</div>
+            <div class="name">Sign In</div>
+        </a>
 
+        <nav aria-label="Primary navigation">
+            <a class="nav-link" href="#premium">Premium</a>
+            <a class="nav-link" href="#courses">Courses</a>
+            <a class="nav-link" href="#contact">Contact</a>
+            <a class="btn btn-primary" href="#signup">Sign Up</a>
+        </nav>
+    </header>
+
+    <main class="hero" role="main">
+        <section class="hero-left" aria-labelledby="hero-title">
+            <h1 id="hero-title">Learn Engineering by doing.</h1>
+            <p class="lead">We combine lessons, games, and videos into an Engineering course for young students to pick up new skills just about as easy as they can waste their time.</p>
+
+            <div class="cta-row">
+                <a class="btn btn-solid" href="#get-started">Get started</a>
+            </div>
+        </section>
+
+        <aside class="hero-right">
+            <!-- Spline 3D Model - Transparent Background -->
+            <spline-viewer 
+                url="https://prod.spline.design/Ra9rOeFXKuO5H0SB/scene.splinecode"
+                style="--background: transparent;">
+            </spline-viewer>
+        </aside>
+    </main>
+
+    <section class="stats-section" aria-label="Key statistics">
+        <div class="stat">
+            <div class="stat-card">
+                <img class="stat-logo" src="images/user-icon.png" alt="User icon">
+                <div class="num">1.2K+</div>
+                <div class="label">users</div>
+            </div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-card">
+                <img class="stat-logo" src="images/maintainence-icon.png" alt="Maintenance icon">
+                <div class="num">99.9%</div>
+                <div class="label">uptime</div>
+            </div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-card">
+                <img class="stat-logo" src="images/star-icon.jpg" alt="Star icon">
+                <div class="num">4.8</div>
+                <div class="label">rating</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © <span id="year"></span> Sign In — Built with a pastel blue, pastel green, white theme.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
